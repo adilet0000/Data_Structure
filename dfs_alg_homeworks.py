@@ -1,9 +1,9 @@
 def dfs_components_from_edge_list_matrix(edge_list, n):
-   # Шаг 1: создаём матрицу смежности
+   # создаём матрицу смежности
    mat = [[0] * n for _ in range(n)]
    for u, v in edge_list:
       mat[u][v] = 1
-      mat[v][u] = 1  # для неориентированного графа
+      mat[v][u] = 1
 
    visited = [0] * n
    components = []
@@ -24,11 +24,11 @@ def dfs_components_from_edge_list_matrix(edge_list, n):
    return components
 
 def dfs_components_from_edge_list_adj_list(edge_list, n):
-   # Шаг 1: создаём список смежности
+   # создаём список смежности
    graph = {i: [] for i in range(n)}
    for u, v in edge_list:
       graph[u].append(v)
-      graph[v].append(u)  # для неориентированного графа
+      graph[v].append(u)
 
    visited = set()
    components = []
@@ -47,3 +47,14 @@ def dfs_components_from_edge_list_adj_list(edge_list, n):
          components.append(comp)
 
    return components
+
+edge_list = [
+   (0, 1),
+   (1, 2),
+   (3, 4)
+]
+n = 5
+
+
+print(dfs_components_from_edge_list_matrix(edge_list, n))
+print(dfs_components_from_edge_list_adj_list(edge_list, n))
